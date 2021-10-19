@@ -1009,7 +1009,7 @@ public class EditPane extends JPanel implements BufferSetListener
 		painter.setEOLMarkersPainted(jEdit.getBooleanProperty(
 			"view.eolMarkers"));
 		painter.setEOLMarkerChar(
-			jEdit.getProperty("view.eolMarkerChar", "·"));
+			jEdit.getProperty("view.eolMarkerChar", "Â·"));
 		painter.setEOLMarkerColor(
 			jEdit.getColorProperty("view.eolMarkerColor"));
 		painter.setWrapGuidePainted(jEdit.getBooleanProperty(
@@ -1042,7 +1042,8 @@ public class EditPane extends JPanel implements BufferSetListener
 			"view.selectionFgColor"));
 		painter.setSelectionFgColorEnabled(jEdit.getBooleanProperty(
 			"view.selectionFg"));
-
+		painter.setNotePad(jEdit.getBooleanProperty("notepadOption"));
+		
 		String defaultFont = jEdit.getProperty("view.font");
 		int defaultFontSize = jEdit.getIntegerProperty("view.fontsize",12);
 		painter.setStyles(SyntaxUtilities.loadStyles(defaultFont,defaultFontSize));

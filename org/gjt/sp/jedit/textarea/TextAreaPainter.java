@@ -147,6 +147,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 	public static final int HIGHEST_LAYER = Integer.MAX_VALUE;
 	//}}}
 
+
 	//{{{ setBounds() method
 	/**
 	 * It is a bad idea to override this, but we need to get the component
@@ -313,7 +314,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 		this.selectionColor = selectionColor;
 		textArea.repaint();
 	} //}}}
-
+	
 	//{{{ getMultipleSelectionColor() method
 	/**
 	 * Returns the multiple selection color.
@@ -987,6 +988,10 @@ public class TextAreaPainter extends JComponent implements TabExpander
 	// should try to use this as little as possible.
 	FontMetrics fm;
 	int extraLineSpacing;
+	public static boolean setNotePad = false;
+	public void setNotePad(boolean arg){
+		setNotePad = arg;
+	}
 	//}}}
 
 	//{{{ TextAreaPainter constructor
@@ -1003,7 +1008,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 		this.textArea = textArea;
 		antiAlias = new AntiAlias(0);
 		extensionMgr = new ExtensionManager();
-		eolMarkerChar = "·";
+		eolMarkerChar = "Â·";
 		setAutoscrolls(true);
 		setOpaque(true);
 		setRequestFocusEnabled(false);
@@ -1150,6 +1155,10 @@ public class TextAreaPainter extends JComponent implements TabExpander
 				gfx.setColor(bgColor);
 				gfx.fillRect(0,y,getWidth(),getLineHeight());
 			} //}}}
+			if (setNotePad) {
+				gfx.setColor(Color.BLUE);
+				gfx.fillRect(0, y, getWidth(), 1);
+			}
 
 			//{{{ Paint token backgrounds
 			ChunkCache.LineInfo lineInfo = textArea.chunkCache.getLineInfo(screenLine);
